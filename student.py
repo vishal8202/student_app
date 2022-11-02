@@ -105,6 +105,32 @@ while True:
             print(i)
 
     elif(choice==9):
-        print()
+        print('Display subject wise mark')
+        adm = input('Enter the admi number ')
+        sub = input('enter the subject you need to display (physics_mark,chemistry_mark,maths_mark) : ')
+        sql = 'SELECT `id` FROM `students` WHERE `admno`=' +adm
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        id = 0
+        for i in result:
+            id = str(i[0])
+        print('Id of the student : ', id)
+        #SELECT `id`, `Student_id`, `physics_mark`, `chemistry_mark`, `maths_mark` FROM `marks` WHERE 1
+        if(sub == 'physics_mark'):
+            sql = 'SELECT `physics_mark` FROM `marks` WHERE `Student_id`='+id
+            mycursor.execute(sql)
+            result = mycursor.fetchall()
+            print('Physics mark of the student is ',result[0])
+        elif(sub == 'chemistry_mark'):
+            sql = 'SELECT `chemistry_mark` FROM `marks` WHERE `Student_id`='+id
+            mycursor.execute(sql)
+            result = mycursor.fetchall()
+            print('chemistry mark of the student is ',result[0])
+        else:
+            sql = 'SELECT `maths_mark` FROM `marks` WHERE `Student_id`='+id
+            mycursor.execute(sql)
+            result = mycursor.fetchall()
+            print('Maths mark of the student is ',result[0])
+
     elif(choice==10):
         break
