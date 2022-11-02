@@ -89,7 +89,21 @@ while True:
             print(i)
         
     elif(choice==8):
-        print()
+        print('Displays the individual marks ')
+        adm = input('enter the admi number u need : ')
+        sql = 'SELECT `id` FROM `students` WHERE `admno`=' +adm
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        id = 0
+        for i in result:
+            id = str(i[0])
+        print('Id of the student : ', id)
+        sql = 'SELECT * FROM `marks` WHERE `id`='+id
+        mycursor.execute(sql)
+        result = mycursor.fetchall()
+        for i in result:
+            print(i)
+
     elif(choice==9):
         print()
     elif(choice==10):
