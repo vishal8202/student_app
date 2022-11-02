@@ -10,6 +10,7 @@ while True:
     print('3 search a student')
     print('4 update the student')
     print('5 delete a student')
+    print('5 delete a student')
     print('6 Add marks to subjects')
     print('7 Display the mark of each student')
     print('8 Displays the individual marks')
