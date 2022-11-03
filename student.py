@@ -10,13 +10,11 @@ while True:
     print('3 search a student')
     print('4 update the student')
     print('5 delete a student')
-    print('5 delete a student')
     print('6 Add marks to subjects')
-    print('7 Display the mark of each student')
-    print('8 Displays the individual marks')
-    print('9 Display subject wise mark')
-    print('10 Total marks of each subject')
-    print('11 exit')
+    print('7 Total mark obtained by each student')
+    print('8 Subject wise mark')
+    print('9 Individual mark for each user')
+    print('10 exit')
 
     choice = int(input('Enter an option: '))
     if(choice==1):
@@ -83,61 +81,10 @@ while True:
         mycursor.execute(sql,data)
         mydb.commit()
     elif(choice == 7):
-        print('Display the marks of each students')
-        sql = 'SELECT s.name,s.admno,s.collage,m.`physics_mark`, m.`chemistry_mark`, m.`maths_mark` FROM `marks` m JOIN students s ON m.Student_id = s.id '
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        for i in result:
-            print(i)
-        
+        print()
     elif(choice==8):
-        print('Displays the individual marks ')
-        adm = input('enter the admi number u need : ')
-        sql = 'SELECT `id` FROM `students` WHERE `admno`=' +adm
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        id = 0
-        for i in result:
-            id = str(i[0])
-        print('Id of the student : ', id)
-        sql = 'SELECT * FROM `marks` WHERE `id`='+id
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        for i in result:
-            print(i)
-
+        print()
     elif(choice==9):
-        print('Display subject wise mark')
-        adm = input('Enter the admi number ')
-        sub = input('enter the subject you need to display (physics_mark,chemistry_mark,maths_mark) : ')
-        sql = 'SELECT `id` FROM `students` WHERE `admno`=' +adm
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        id = 0
-        for i in result:
-            id = str(i[0])
-        print('Id of the student : ', id)
-        #SELECT `id`, `Student_id`, `physics_mark`, `chemistry_mark`, `maths_mark` FROM `marks` WHERE 1
-        if(sub == 'physics_mark'):
-            sql = 'SELECT `physics_mark` FROM `marks` WHERE `Student_id`='+id
-            
-        elif(sub == 'chemistry_mark'):
-            sql = 'SELECT `chemistry_mark` FROM `marks` WHERE `Student_id`='+id
-           
-        else:
-            sql = 'SELECT `maths_mark` FROM `marks` WHERE `Student_id`='+id
-           
-
-        mycursor.execute(sql)
-        result = mycursor.fetchall()
-        print('Physics mark of the student is ',result[0])
-
-    elif(choice == 10):
-        print('Total marks')
-        sql = 'SELECT SUM(`physics_mark`),SUM(`chemistry_mark`), SUM(`maths_mark`) FROM `marks`'
-        mycursor.execute(sql)
-        result=mycursor.fetchall()
-        print('Total mark of the student ',result)
-        #print(f'Total mark of the student {id} is {result}')
-    elif(choice==11):
+        print()
+    elif(choice==10):
         break
